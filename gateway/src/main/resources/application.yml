@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    inetutils:
+      timeout-seconds: 5
+      default-hostname: localhost
+      default-ip-address: 127.0.01
+    gateway:
+      routes:
+        - id: order-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/orders/**
+
+        - id: inventory-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/inventory/**
+
+        - id: payment-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/payment/**
+
+        - id: notification-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/notifications/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
