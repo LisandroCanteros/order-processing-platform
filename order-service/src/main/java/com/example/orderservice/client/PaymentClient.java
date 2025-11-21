@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "payment", url = "http://localhost:8083")
 public interface PaymentClient {
 
-    @PostMapping("/payments/charge")
-    void charge(
+    @PostMapping("/payment")
+    void pay(
             @RequestParam(value = "productId") String productId,
             @RequestParam(value = "quantity") Integer quantity);
 }

@@ -27,3 +27,6 @@ resilience4fj:
       orderServiceRetry:
         maxAttempts: 3
         waitDuration: 500ms
+
+topic:
+  order-created: "order-created"

@@ -33,10 +33,10 @@ public class OrderService {
         inventoryClient.reserveStock(request.getProductId(), request.getQuantity());
 
         log.info("Calling payment...");
-        paymentClient.charge(request.getProductId(), request.getQuantity());
+        paymentClient.pay(request.getProductId(), request.getQuantity());
 
-        log.info("Sending notification...");
-        notificationClient.send("Order created!");
+//        log.info("Sending notification...");
+//        notificationClient.send("Order created!");
         String id = UUID.randomUUID().toString();
         log.info("Order {} created", id);
 
